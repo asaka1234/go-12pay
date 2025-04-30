@@ -17,7 +17,7 @@ func (cli *Client) GenQRCode(req GenQRCodeRequest) (*GenQRCodeResponse, error) {
 		SetCloseConnection(true).
 		R().
 		SetBody(req).
-		SetHeaders(getAuthHeaders(HEAD_AUTH_KEY, HEAD_CHANNEL, HEAD_DEVICE, HEAD_PARTNER_CODE)).
+		SetHeaders(getAuthHeaders(cli.AuthKey, cli.Channel, cli.Device, cli.PartnerCode)).
 		SetResult(&result).
 		Post(rawURL)
 
