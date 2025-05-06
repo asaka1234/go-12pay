@@ -46,7 +46,7 @@ type GenQRCodeResponse struct {
 // Notice: 12pay是没有任何callback的验签逻辑的, 所以需要自己搞. 一般都是借助ref字段实现
 
 type CallbackRequest struct {
-	RespCode   int     `json:"resp_code"`
+	RespCode   int     `json:"resp_code"` //200是成功
 	RespMsg    string  `json:"resp_msg"`
 	Command    string  `json:"command"`
 	BankRef    string  `json:"bank_ref"`
