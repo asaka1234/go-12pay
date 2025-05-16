@@ -1,13 +1,14 @@
 package go_12pay
 
 const (
-	//deposit
-	BASE_URL          = "https://api.1-2-pay.com/v1"
-	HEAD_AUTH_KEY     = "hiahaihaihaihaihaiahiahihaih"
-	HEAD_PARTNER_CODE = "AAA"
-	HEAD_DEVICE       = "WEB"
-	HEAD_CHANNEL      = "WEB"
+	AUTH_KEY     = "hiahaihaihaihaihaiahiahihaih"
+	PARTNER_CODE = "AAA"
+	DEVICE       = "WEB"
+	CHANNEL      = "WEB"
 
+	//deposit
+	DEPOSIT_URL = "https://api.1-2-pay.com/v1/create-qr-code"
+	
 	//withdraw
-	PAYOUT_URL = "https://payout.1-2-pay.com"
+	PAYOUT_URL = "https://payout.1-2-pay.com/payout"
 )

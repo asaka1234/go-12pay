@@ -11,21 +11,21 @@ type Client struct {
 	Device      string
 	Channel     string
 
-	BaseURL   string //充值url
-	PayoutURL string //退款url
+	DepositURL  string //充值url
+	WithdrawURL string //退款url
 
 	ryClient *resty.Client
 	logger   utils.Logger
 }
 
-func NewClient(logger utils.Logger, partnerCode string, authKey string, device string, channel string, baseURL string, payoutURL string) *Client {
+func NewClient(logger utils.Logger, partnerCode string, authKey string, device string, channel string, depositURL string, withdrawURL string) *Client {
 	return &Client{
 		AuthKey:     authKey,
 		PartnerCode: partnerCode,
 		Device:      device,
 		Channel:     channel,
-		BaseURL:     baseURL,
-		PayoutURL:   payoutURL,
+		DepositURL:  depositURL,
+		WithdrawURL: withdrawURL,
 		ryClient:    resty.New(), //client实例
 		logger:      logger,
 	}
