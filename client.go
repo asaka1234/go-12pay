@@ -1,20 +1,24 @@
 package go_12pay
 
-import "github.com/go-resty/resty/v2"
+import (
+	"github.com/asaka1234/go-12pay/utils"
+	"github.com/go-resty/resty/v2"
+)
 
 type Client struct {
-	AuthKey     string
-	PartnerCode string
+	PartnerCode string //商户号
+	AuthKey     string //accessKey
 	Device      string
 	Channel     string
 
-	BaseURL   string
-	PayoutURL string
+	BaseURL   string //充值url
+	PayoutURL string //退款url
 
 	ryClient *resty.Client
+	logger   utils.Logger
 }
 
-func NewClient(authKey string, partnerCode string, device string, channel string, baseURL string, payoutURL string) *Client {
+func NewClient(logger utils.Logger, partnerCode string, authKey string, device string, channel string, baseURL string, payoutURL string) *Client {
 	return &Client{
 		AuthKey:     authKey,
 		PartnerCode: partnerCode,
@@ -23,5 +27,6 @@ func NewClient(authKey string, partnerCode string, device string, channel string
 		BaseURL:     baseURL,
 		PayoutURL:   payoutURL,
 		ryClient:    resty.New(), //client实例
+		logger:      logger,
 	}
 }
