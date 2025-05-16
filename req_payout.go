@@ -7,8 +7,7 @@ import (
 // 退款
 func (cli *Client) Payout(req WithdrawRequest) (*WithdrawResponse, error) {
 
-	reqPath := "/payout"
-	rawURL := cli.PayoutURL + reqPath
+	rawURL := cli.WithdrawURL
 
 	//返回值会放到这里
 	var result WithdrawResponse

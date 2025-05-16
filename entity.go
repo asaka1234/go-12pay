@@ -14,6 +14,7 @@ type GenQRCodeRequest struct {
 }
 
 type GenQRCodeResponse struct {
+	Error    string `json:"error"`     //如果返回错误，则有该字段
 	RespCode int    `json:"resp_code"` //201是正确
 	RespMsg  string `json:"resp_msg"`
 	Data     struct {

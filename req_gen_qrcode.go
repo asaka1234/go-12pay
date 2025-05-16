@@ -6,9 +6,8 @@ import (
 
 // 生成支付二维码
 func (cli *Client) GenQRCode(req GenQRCodeRequest) (*GenQRCodeResponse, error) {
-
-	reqPath := "/create-qr-code"
-	rawURL := cli.BaseURL + reqPath
+	
+	rawURL := cli.DepositURL
 
 	//返回值会放到这里
 	var result GenQRCodeResponse
