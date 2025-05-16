@@ -65,6 +65,13 @@ type One2PayDepositBackReq struct {
 	TransId    string  `json:"trans_id"`
 }
 
+type One2PayDepositBackRsp struct {
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+	Data    string `json:"data"`
+	Success bool   `json:"success"`
+}
+
 // ----------withdraw-------------------------
 
 type WithdrawRequest struct {
