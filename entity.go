@@ -18,28 +18,29 @@ type GenQRCodeResponse struct {
 	RespCode int    `json:"resp_code"` //201是正确
 	RespMsg  string `json:"resp_msg"`
 	Data     struct {
-		PartnerCode string    `json:"partner_code"`
-		Method      string    `json:"method"`
-		CodeType    string    `json:"code_type"`
-		CodeImage   string    `json:"code_image"`
-		CodeUrl     string    `json:"code_url"` //是付款二维码的url
-		TransId     string    `json:"trans_id"`
-		Channel     string    `json:"channel"`
-		WalletCode  string    `json:"wallet_code"`
-		Ref1        string    `json:"ref1"`
-		Ref2        string    `json:"ref2"`
-		Ref3        string    `json:"ref3"`
-		Ref4        string    `json:"ref4"`
-		One2PayRef  string    `json:"one2pay_ref"`
-		Amount      int       `json:"amount"`
-		Currency    string    `json:"currency"`
-		StoreId     string    `json:"store_id"`
-		TerminalId  string    `json:"terminal_id"`
-		MobileNo    string    `json:"mobile_no"`
-		Location    string    `json:"location"`
-		Device      string    `json:"device"`
-		ExpiredDate string    `json:"expired_date"`
-		CreatedDate time.Time `json:"created_date"`
+		Method            string `json:"method"`
+		Channel           string `json:"channel"`
+		Ref1              string `json:"ref1"`
+		Ref2              string `json:"ref2"`
+		Ref3              string `json:"ref3"`
+		Ref4              string `json:"ref4"`
+		Amount            string `json:"amount"`
+		Currency          string `json:"currency"`
+		Location          string `json:"location"`
+		Device            string `json:"device"`
+		PartnerCode       string `json:"partner_code"`
+		CodeType          string `json:"code_type"`
+		CodeImage         string `json:"code_image"`
+		CodeURL           string `json:"code_url"`
+		TransID           string `json:"trans_id"`
+		WalletCode        string `json:"wallet_code"`
+		One2payRef        string `json:"one2pay_ref"`
+		StoreID           string `json:"store_id"`
+		TerminalID        string `json:"terminal_id"`
+		MobileNo          string `json:"mobile_no"`
+		ExpiredDate       string `json:"expired_date"`
+		CreatedDate       string `json:"created_date"`
+		CodeImageTemplate string `json:"code_image_template"`
 	} `json:"data"`
 }
 
