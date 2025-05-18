@@ -5,12 +5,12 @@ import (
 )
 
 // 生成支付二维码
-func (cli *Client) GenQRCode(req GenQRCodeRequest) (*GenQRCodeResponse, error) {
-	
+func (cli *Client) GenQRCode(req One2PayGenQRCodeRequest) (*One2PayGenQRCodeResponse, error) {
+
 	rawURL := cli.DepositURL
 
 	//返回值会放到这里
-	var result GenQRCodeResponse
+	var result One2PayGenQRCodeResponse
 
 	_, err := cli.ryClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
 		SetCloseConnection(true).

@@ -5,12 +5,12 @@ import (
 )
 
 // 退款
-func (cli *Client) Payout(req WithdrawRequest) (*WithdrawResponse, error) {
+func (cli *Client) Withdraw(req One2PayWithdrawRequest) (*One2PayWithdrawResponse, error) {
 
 	rawURL := cli.WithdrawURL
 
 	//返回值会放到这里
-	var result WithdrawResponse
+	var result One2PayWithdrawResponse
 
 	_, err := cli.ryClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
 		SetCloseConnection(true).

@@ -5,7 +5,7 @@ import "time"
 // ----------generate qrcode-------------------------
 
 // 生成二维码
-type GenQRCodeRequest struct {
+type One2PayGenQRCodeRequest struct {
 	Amount float64 `json:"amount"` //金额
 	Ref1   string  `json:"ref1"`   //可以放业务自己的orderNo  同时可以加上一些验签
 	Ref2   string  `json:"ref2"`
@@ -13,7 +13,7 @@ type GenQRCodeRequest struct {
 	Ref4   string  `json:"ref4"`
 }
 
-type GenQRCodeResponse struct {
+type One2PayGenQRCodeResponse struct {
 	Error    string `json:"error"`     //如果返回错误，则有该字段
 	RespCode int    `json:"resp_code"` //201是正确
 	RespMsg  string `json:"resp_msg"`
@@ -74,18 +74,21 @@ type One2PayDepositBackRsp struct {
 
 // ----------withdraw-------------------------
 
-type WithdrawRequest struct {
+type One2PayWithdrawRequest struct {
 	BankAcc       string  `json:"bankacc"`        //required
 	BankCode      string  `json:"bankcode"`       //required
 	BankName      string  `json:"bankname"`       //required
-	AccName       string  `json:"accname"`        //required
+	AccountName   string  `json:"accname"`        //required
 	Amount        float64 `json:"amount"`         //required
 	MobileNo      string  `json:"mobileno"`       //required
 	TransactionBy string  `json:"transaction_by"` //required
 	Ref1          string  `json:"ref1"`           //required
+	Ref2          string  `json:"ref2"`
+	Ref3          string  `json:"ref3"`
+	Ref4          string  `json:"ref4"`
 }
 
-type WithdrawResponse struct {
+type One2PayWithdrawResponse struct {
 	Status              int       `json:"status"` //Success Case Status 1000 only
 	Message             string    `json:"message"`
 	Ref1                string    `json:"ref1"`

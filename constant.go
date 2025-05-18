@@ -5,8 +5,8 @@ package go_12pay
 type One2payDepositStatus int
 
 const (
-	Success One2payDepositStatus = iota + 200
-	Created
+	One2payDepositStatusSuccess One2payDepositStatus = iota + 200
+	One2payDepositStatusCreated
 )
 
 func (s One2payDepositStatus) Code() int {
@@ -15,9 +15,9 @@ func (s One2payDepositStatus) Code() int {
 
 func (s One2payDepositStatus) Name() string {
 	switch s {
-	case Success:
+	case One2payDepositStatusSuccess:
 		return "Success"
-	case Created:
+	case One2payDepositStatusCreated:
 		return "Created"
 	default:
 		return "Unknown"
@@ -26,9 +26,9 @@ func (s One2payDepositStatus) Name() string {
 
 func (s One2payDepositStatus) Desc() string {
 	switch s {
-	case Success:
+	case One2payDepositStatusSuccess:
 		return "Success"
-	case Created:
+	case One2payDepositStatusCreated:
 		return "Created"
 	default:
 		return "Unknown"
