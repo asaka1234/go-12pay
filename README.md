@@ -11,3 +11,13 @@ Withdraw
 Comment
 ===============
 both support deposit && withdrawl
+
+
+鉴权
+==============
+请求时在header里放了partner_code 和 authorization . 通过这个进行鉴权 (并没有对请求body做签名)
+
+
+回调地址
+==============
+是提前让12pay设置好的.（无法api中动态修改）
