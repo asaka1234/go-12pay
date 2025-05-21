@@ -1,3 +1,8 @@
+说明
+==============
+只能用来支付THB泰铢,且每次至少要300泰铢才可以.
+(所以参数中不需要指定currency)
+
 Deposit
 ==============
 1. 生成一个支付qrcode二维码
@@ -15,9 +20,11 @@ both support deposit && withdrawl
 
 鉴权
 ==============
-请求时在header里放了partner_code 和 authorization . 通过这个进行鉴权 (并没有对请求body做签名)
+1. 请求时在header里放了partner_code 和 authorization . 通过这个进行鉴权 (并没有对请求body做签名)
+2. 充值回调: 是我们自己做了一个md5签名放到了ref4字段里, 通过这个来预防假的callback
 
 
 回调地址
 ==============
 是提前让12pay设置好的.（无法api中动态修改）
+TODO 这里得有个后台??

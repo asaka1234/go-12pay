@@ -2,6 +2,8 @@ package go_12pay
 
 import (
 	"crypto/tls"
+	"errors"
+	"github.com/asaka1234/go-12pay/utils"
 )
 
 // 生成支付二维码
@@ -9,22 +11,52 @@ func (cli *Client) GenQRCode(req One2PayGenQRCodeRequest) (*One2PayGenQRCodeResp
 
 	rawURL := cli.DepositURL
 
+	//ref4里放的就是签名字符串
+	req.Ref4 = utils.GenSign(req.Amount, req.Ref1, cli.AuthKey)
+
 	//返回值会放到这里
 	var result One2PayGenQRCodeResponse
 
-	_, err := cli.ryClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
+	resp, err := cli.ryClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
 		SetCloseConnection(true).
 		R().
 		SetBody(req).
-		SetHeaders(getAuthHeaders(cli.AuthKey, cli.Channel, cli.Device, cli.PartnerCode)).
+		SetHeaders(getAuthHeaders(cli.PartnerCode, cli.AuthKey, cli.Channel, cli.Device)).
 		SetResult(&result).
+		SetError(&result).
 		Post(rawURL)
 
-	//fmt.Printf("accessToken: %+v\n", resp)
+	//fmt.Printf("result: %s\n", string(resp.Body()))
 
 	if err != nil {
 		return nil, err
 	}
 
+	//-----------错误处理------------------------
+	if resp.StatusCode() != 201 {
+		if result.Error != "" {
+			return nil, errors.New(result.Error)
+		}
+		return nil, errors.New(result.RespMsg)
+	}
+
 	return &result, err
 }
+
+/*
+curl --location --request POST 'https://api.1-2-pay.com/v1/create-qr-code' \
+--header 'channel: WEB' \
+--header 'location;' \
+--header 'device: WEB' \
+--header 'Content-Type: application/json' \
+--header 'partner_code: TCU' \
+--header 'authorization:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...' \
+--data-raw '{
+"amount": 1.012,
+"ref1": "20231004142403",
+"ref2": "",
+"ref3": "",
+"ref4": ""
+}'
+*/
