@@ -6,27 +6,17 @@ import (
 )
 
 type Client struct {
-	PartnerCode string //商户号
-	AuthKey     string //accessKey
-	Device      string
-	Channel     string
-
-	DepositURL  string //充值url
-	WithdrawURL string //退款url
+	Params One2PayInitParams
 
 	ryClient *resty.Client
 	logger   utils.Logger
 }
 
-func NewClient(logger utils.Logger, partnerCode string, authKey string, device string, channel string, depositURL string, withdrawURL string) *Client {
+func NewClient(logger utils.Logger, params One2PayInitParams) *Client {
 	return &Client{
-		AuthKey:     authKey,
-		PartnerCode: partnerCode,
-		Device:      device,
-		Channel:     channel,
-		DepositURL:  depositURL,
-		WithdrawURL: withdrawURL,
-		ryClient:    resty.New(), //client实例
-		logger:      logger,
+		Params: params,
+
+		ryClient: resty.New(), //client实例
+		logger:   logger,
 	}
 }

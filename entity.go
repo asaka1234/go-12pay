@@ -2,6 +2,16 @@ package go_12pay
 
 import "time"
 
+type One2PayInitParams struct {
+	PartnerCode string `json:"partnerCode" mapstructure:"partnerCode"` //商户号
+	AuthKey     string `json:"authKey" mapstructure:"authKey"`         //accessKey
+	Device      string `json:"device" mapstructure:"device"`
+	Channel     string `json:"channel" mapstructure:"channel"`
+
+	DepositUrl  string `json:"depositUrl" mapstructure:"depositUrl"`   //充值url
+	WithdrawUrl string `json:"withdrawUrl" mapstructure:"withdrawUrl"` //退款url
+}
+
 // ----------generate qrcode-------------------------
 
 // 生成二维码

@@ -8,7 +8,7 @@ import (
 // 退款
 func (cli *Client) Withdraw(req One2PayWithdrawRequest) (*One2PayWithdrawResponse, error) {
 
-	rawURL := cli.WithdrawURL
+	rawURL := cli.Params.WithdrawUrl
 
 	//返回值会放到这里
 	var result One2PayWithdrawResponse
@@ -17,7 +17,7 @@ func (cli *Client) Withdraw(req One2PayWithdrawRequest) (*One2PayWithdrawRespons
 		SetCloseConnection(true).
 		R().
 		SetBody(req).
-		SetHeaders(getAuthHeaders(cli.PartnerCode, cli.AuthKey, cli.Channel, cli.Device)).
+		SetHeaders(getAuthHeaders(cli.Params.PartnerCode, cli.Params.AuthKey, cli.Params.Channel, cli.Params.Device)).
 		SetResult(&result).
 		SetError(&result).
 		Post(rawURL)

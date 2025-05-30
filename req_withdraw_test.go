@@ -11,7 +11,7 @@ func TestWithdraw(t *testing.T) {
 	fmt.Printf("==wsx====>%d\n", int(cc))
 
 	//构造client
-	cli := NewClient(nil, PARTNER_CODE, AUTH_KEY, DEVICE, CHANNEL, DEPOSIT_URL, PAYOUT_URL)
+	cli := NewClient(nil, One2PayInitParams{PARTNER_CODE, AUTH_KEY, DEVICE, CHANNEL, DEPOSIT_URL, PAYOUT_URL})
 
 	//发请求
 	resp, err := cli.Withdraw(GenWithdrawRequestDemo())

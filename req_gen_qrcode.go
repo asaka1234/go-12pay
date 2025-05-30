@@ -9,10 +9,10 @@ import (
 // 生成支付二维码
 func (cli *Client) GenQRCode(req One2PayGenQRCodeRequest) (*One2PayGenQRCodeResponse, error) {
 
-	rawURL := cli.DepositURL
+	rawURL := cli.Params.DepositUrl
 
 	//ref4里放的就是签名字符串
-	req.Ref4 = utils.GenSign(req.Amount, req.Ref1, cli.AuthKey)
+	req.Ref4 = utils.GenSign(req.Amount, req.Ref1, cli.Params.AuthKey)
 
 	//返回值会放到这里
 	var result One2PayGenQRCodeResponse
@@ -21,7 +21,7 @@ func (cli *Client) GenQRCode(req One2PayGenQRCodeRequest) (*One2PayGenQRCodeResp
 		SetCloseConnection(true).
 		R().
 		SetBody(req).
-		SetHeaders(getAuthHeaders(cli.PartnerCode, cli.AuthKey, cli.Channel, cli.Device)).
+		SetHeaders(getAuthHeaders(cli.Params.PartnerCode, cli.Params.AuthKey, cli.Params.Channel, cli.Params.Device)).
 		SetResult(&result).
 		SetError(&result).
 		Post(rawURL)
