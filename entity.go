@@ -3,13 +3,13 @@ package go_12pay
 import "time"
 
 type One2PayInitParams struct {
-	PartnerCode string `json:"partnerCode" mapstructure:"partnerCode" config:"partnerCode"` //商户号
-	AuthKey     string `json:"authKey" mapstructure:"authKey" config:"authKey"`             //accessKey
-	Device      string `json:"device" mapstructure:"device" config:"device"`
-	Channel     string `json:"channel" mapstructure:"channel" config:"channel"`
+	PartnerCode string `json:"partnerCode" mapstructure:"partnerCode" config:"partnerCode" yaml:"partnerCode"` //商户号
+	AuthKey     string `json:"authKey" mapstructure:"authKey" config:"authKey" yaml:"authKey"`                 //accessKey
+	Device      string `json:"device" mapstructure:"device" config:"device" yaml:"device"`
+	Channel     string `json:"channel" mapstructure:"channel" config:"channel" yaml:"channel"`
 
-	DepositUrl  string `json:"depositUrl" mapstructure:"depositUrl" config:"depositUrl"`    //充值url
-	WithdrawUrl string `json:"withdrawUrl" mapstructure:"withdrawUrl" config:"withdrawUrl"` //退款url
+	DepositUrl  string `json:"depositUrl" mapstructure:"depositUrl" config:"depositUrl" yaml:"depositUrl"`     //充值url
+	WithdrawUrl string `json:"withdrawUrl" mapstructure:"withdrawUrl" config:"withdrawUrl" yaml:"withdrawUrl"` //退款url
 }
 
 // ----------generate qrcode-------------------------
