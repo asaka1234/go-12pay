@@ -12,12 +12,14 @@ func (cli *Client) DepositCallback(req One2PayDepositBackReq, processor func(One
 	if !verifySucceed {
 		return errors.New("verify failed!")
 	}
-	//看看是否成功
-	if req.RespCode != int(One2payDepositStatusSuccess) {
-		//说明失败
-		return errors.New("resp_msg is " + req.RespMsg)
-	}
 
+	/*
+		//看看是否成功
+		if req.RespCode != int(One2payDepositStatusSuccess) {
+			//说明失败
+			return errors.New("resp_msg is " + req.RespMsg)
+		}
+	*/
 	//开始处理
 	return processor(req)
 }
