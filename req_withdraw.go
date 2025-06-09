@@ -18,6 +18,7 @@ func (cli *Client) Withdraw(req One2PayWithdrawRequest) (*One2PayWithdrawRespons
 		R().
 		SetBody(req).
 		SetHeaders(getAuthHeaders(cli.Params.PartnerCode, cli.Params.AuthKey, cli.Params.Channel, cli.Params.Device)).
+		SetDebug(cli.debugMode).
 		SetResult(&result).
 		SetError(&result).
 		Post(rawURL)
