@@ -6,14 +6,14 @@ import (
 )
 
 type Client struct {
-	Params One2PayInitParams
+	Params *One2PayInitParams
 
 	ryClient  *resty.Client
 	debugMode bool
 	logger    utils.Logger
 }
 
-func NewClient(logger utils.Logger, params One2PayInitParams) *Client {
+func NewClient(logger utils.Logger, params *One2PayInitParams) *Client {
 	return &Client{
 		Params: params,
 
