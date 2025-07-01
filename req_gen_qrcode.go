@@ -3,6 +3,7 @@ package go_12pay
 import (
 	"crypto/tls"
 	"errors"
+	"fmt"
 	"github.com/asaka1234/go-12pay/utils"
 )
 
@@ -27,7 +28,7 @@ func (cli *Client) GenQRCode(req One2PayGenQRCodeRequest) (*One2PayGenQRCodeResp
 		SetError(&result).
 		Post(rawURL)
 
-	//fmt.Printf("result: %s\n", string(resp.Body()))
+	fmt.Printf("result: %s\n", string(resp.Body()))
 
 	if err != nil {
 		return nil, err
