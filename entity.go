@@ -59,21 +59,21 @@ type One2PayGenQRCodeResponse struct {
 // Notice: 12pay是没有任何callback的验签逻辑的, 所以需要自己搞. 一般都是借助ref字段实现
 
 type One2PayDepositBackReq struct {
-	RespCode   int     `json:"resp_code"` //200是成功
-	RespMsg    string  `json:"resp_msg"`
-	Command    string  `json:"command"`
-	BankRef    string  `json:"bank_ref"`
-	TranxId    string  `json:"tranx_id"`
-	One2PayRef string  `json:"one2pay_ref"`
-	Datetime   string  `json:"datetime"`
-	EffDate    string  `json:"effdate"`
-	Amount     float64 `json:"amount"`
-	CusName    string  `json:"cusname"`
-	Ref1       string  `json:"ref1"` //放业务自己的orderNo (只能是数字/字母)
-	Ref2       string  `json:"ref2"`
-	Ref3       string  `json:"ref3"`
-	Ref4       string  `json:"ref4"`     // 这个用来做签名, 是amount/ref1/authkey的一个md5签名的截断值(18位)
-	TransId    string  `json:"trans_id"` //是psp三方的订单id
+	RespCode   int     `json:"resp_code" mapstructure:"resp_code"` //200是成功
+	RespMsg    string  `json:"resp_msg" mapstructure:"resp_msg"`
+	Command    string  `json:"command" mapstructure:"command"`
+	BankRef    string  `json:"bank_ref" mapstructure:"bank_ref"`
+	TranxId    string  `json:"tranx_id" mapstructure:"tranx_id"`
+	One2PayRef string  `json:"one2pay_ref" mapstructure:"one2pay_ref"`
+	Datetime   string  `json:"datetime" mapstructure:"datetime"`
+	EffDate    string  `json:"effdate" mapstructure:"effdate"`
+	Amount     float64 `json:"amount" mapstructure:"amount"`
+	CusName    string  `json:"cusname" mapstructure:"cusname"`
+	Ref1       string  `json:"ref1" mapstructure:"ref1"` //放业务自己的orderNo (只能是数字/字母)
+	Ref2       string  `json:"ref2" mapstructure:"ref2"`
+	Ref3       string  `json:"ref3" mapstructure:"ref3"`
+	Ref4       string  `json:"ref4" mapstructure:"ref4"`         // 这个用来做签名, 是amount/ref1/authkey的一个md5签名的截断值(18位)
+	TransId    string  `json:"trans_id" mapstructure:"trans_id"` //是psp三方的订单id
 }
 
 /*
@@ -106,17 +106,17 @@ type One2PayDepositBackRsp struct {
 // ----------withdraw-------------------------
 
 type One2PayWithdrawRequest struct {
-	BankAcc       string  `json:"bankacc"`        //required
-	BankCode      string  `json:"bankcode"`       //required
-	BankName      string  `json:"bankname"`       //required
-	AccountName   string  `json:"accname"`        //required
-	Amount        float64 `json:"amount"`         //required
-	MobileNo      string  `json:"mobileno"`       //required
-	TransactionBy string  `json:"transaction_by"` //required
-	Ref1          string  `json:"ref1"`           //required
-	Ref2          string  `json:"ref2"`
-	Ref3          string  `json:"ref3"`
-	Ref4          string  `json:"ref4"`
+	BankAcc       string  `json:"bankacc" mapstructure:"bankacc"`               //required
+	BankCode      string  `json:"bankcode" mapstructure:"bankcode"`             //required
+	BankName      string  `json:"bankname" mapstructure:"bankname"`             //required
+	AccountName   string  `json:"accname" mapstructure:"accname"`               //required
+	Amount        float64 `json:"amount" mapstructure:"amount"`                 //required
+	MobileNo      string  `json:"mobileno" mapstructure:"mobileno"`             //required
+	TransactionBy string  `json:"transaction_by" mapstructure:"transaction_by"` //required
+	Ref1          string  `json:"ref1" mapstructure:"ref1"`                     //required
+	Ref2          string  `json:"ref2" mapstructure:"ref2"`
+	Ref3          string  `json:"ref3" mapstructure:"ref3"`
+	Ref4          string  `json:"ref4" mapstructure:"ref4"`
 }
 
 /*
