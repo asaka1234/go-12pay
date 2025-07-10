@@ -106,10 +106,10 @@ type One2PayDepositBackRsp struct {
 // ----------withdraw-------------------------
 
 type One2PayWithdrawRequest struct {
-	BankAcc       string  `json:"bankacc" mapstructure:"bankacc"`               //required
-	BankCode      string  `json:"bankcode" mapstructure:"bankcode"`             //required
-	BankName      string  `json:"bankname" mapstructure:"bankname"`             //required
-	AccountName   string  `json:"accname" mapstructure:"accname"`               //required
+	BankAcc       string  `json:"bankacc" mapstructure:"bankacc"`               //required  bankAccount 银行卡号
+	BankCode      string  `json:"bankcode" mapstructure:"bankcode"`             //required  银行code
+	BankName      string  `json:"bankname" mapstructure:"bankname"`             //required  银行名字
+	AccountName   string  `json:"accname" mapstructure:"accname"`               //required  账号拥有人
 	Amount        float64 `json:"amount" mapstructure:"amount"`                 //required
 	MobileNo      string  `json:"mobileno" mapstructure:"mobileno"`             //required
 	TransactionBy string  `json:"transaction_by" mapstructure:"transaction_by"` //required
