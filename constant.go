@@ -120,7 +120,11 @@ func GetAcronymCode(acronym string) string {
 		"GHB":   "033",
 		"ISBT":  "066",
 	}
-	return codes[acronym]
+
+	if _, ok := codes[acronym]; ok {
+		return codes[acronym]
+	}
+	return ""
 }
 
 // Eq checks if the bank code matches the given value
