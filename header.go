@@ -16,3 +16,13 @@ func getAuthHeaders(partnerCode string, auth string, channel string, device stri
 		"device":        device, //WEB  option
 	}
 }
+
+func getPayoutAuthHeaders(partnerCode string, auth string, channel string, device string) map[string]string {
+	return map[string]string{
+		"Content-Type":  "text/plain",
+		"channel":       channel, //"WEB",
+		"partner_code":  partnerCode,
+		"Authorization": auth,
+		"device":        device, //WEB  option
+	}
+}

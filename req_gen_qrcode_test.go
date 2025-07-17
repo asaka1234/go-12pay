@@ -6,9 +6,9 @@ import (
 )
 
 func TestGenQRCode(t *testing.T) {
-
+	vlog := VLog{}
 	//构造client
-	cli := NewClient(nil, &One2PayInitParams{PARTNER_CODE, AUTH_KEY, DEVICE, CHANNEL, DEPOSIT_URL, PAYOUT_URL})
+	cli := NewClient(vlog, &One2PayInitParams{PARTNER_CODE, AUTH_KEY, DEVICE, CHANNEL, DEPOSIT_URL, PAYOUT_URL})
 
 	//发请求
 	resp, err := cli.GenQRCode(GenDepositRequestDemo())
@@ -22,7 +22,7 @@ func TestGenQRCode(t *testing.T) {
 func GenDepositRequestDemo() One2PayGenQRCodeRequest {
 	return One2PayGenQRCodeRequest{
 		Amount: 700,
-		Ref1:   "9438965", //Unique customer id in your system. 业务系统里的唯一客户id
+		Ref1:   "9438239651111", //Unique customer id in your system. 业务系统里的唯一客户id
 		Ref3:   "uname",
 	}
 }

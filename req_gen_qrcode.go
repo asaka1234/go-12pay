@@ -23,11 +23,12 @@ func (cli *Client) GenQRCode(req One2PayGenQRCodeRequest) (*One2PayGenQRCodeResp
 		SetBody(req).
 		SetHeaders(getAuthHeaders(cli.Params.PartnerCode, cli.Params.AuthKey, cli.Params.Channel, cli.Params.Device)).
 		SetDebug(cli.debugMode).
+		SetLogger(cli.logger).
 		SetResult(&result).
 		SetError(&result).
 		Post(rawURL)
 
-	//fmt.Printf("result: %s\n", string(resp.Body()))
+	//fmt.Printf("code: %d\n", resp.StatusCode())
 
 	if err != nil {
 		return nil, err
