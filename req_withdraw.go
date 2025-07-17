@@ -2,7 +2,6 @@ package go_12pay
 
 import (
 	"crypto/tls"
-	"encoding/json"
 	"errors"
 	"fmt"
 )
@@ -16,13 +15,11 @@ func (cli *Client) Withdraw(req One2PayWithdrawRequest) (*One2PayWithdrawRespons
 	//返回值会放到这里
 	var result One2PayWithdrawResponse
 
-	textBody, _ := json.Marshal(req)
-
 	resp, err := cli.ryClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
 		SetCloseConnection(true).
 		R().
-		SetBody(string(textBody)).
-		SetHeaders(getPayoutAuthHeaders(cli.Params.PartnerCode, cli.Params.AuthKey, cli.Params.Channel, cli.Params.Device)).
+		SetBody(req).
+		SetHeaders(getPayoutAuthHeaders(cli.Params.PartnerCode, cli.Params.AuthKey, cli.Params.Channel)).
 		SetDebug(cli.debugMode).
 		SetResult(&result).
 		SetLogger(cli.logger).
