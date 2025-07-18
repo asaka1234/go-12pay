@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 	"errors"
 	"github.com/asaka1234/go-12pay/utils"
+	jsoniter "github.com/json-iterator/go"
 )
 
 // 生成支付二维码
@@ -23,12 +24,13 @@ func (cli *Client) GenQRCode(req One2PayGenQRCodeRequest) (*One2PayGenQRCodeResp
 		SetBody(req).
 		SetHeaders(getAuthHeaders(cli.Params.PartnerCode, cli.Params.AuthKey, cli.Params.Channel, cli.Params.Device)).
 		SetDebug(cli.debugMode).
-		SetLogger(cli.logger).
 		SetResult(&result).
 		SetError(&result).
 		Post(rawURL)
 
-	//fmt.Printf("code: %d\n", resp.StatusCode())
+	//print log
+	restLog, _ := jsoniter.ConfigCompatibleWithStandardLibrary.Marshal(utils.GetRestyLog(resp))
+	cli.logger.Infof("PSPResty->%+v", string(restLog))
 
 	if err != nil {
 		return nil, err

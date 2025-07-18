@@ -4,6 +4,8 @@ import (
 	"crypto/tls"
 	"errors"
 	"fmt"
+	"github.com/asaka1234/go-12pay/utils"
+	jsoniter "github.com/json-iterator/go"
 )
 
 // 退款
@@ -22,9 +24,12 @@ func (cli *Client) Withdraw(req One2PayWithdrawRequest) (*One2PayWithdrawRespons
 		SetHeaders(getPayoutAuthHeaders(cli.Params.PartnerCode, cli.Params.AuthKey, cli.Params.Channel)).
 		SetDebug(cli.debugMode).
 		SetResult(&result).
-		SetLogger(cli.logger).
 		SetError(&result).
 		Post(rawURL)
+
+	//print log
+	restLog, _ := jsoniter.ConfigCompatibleWithStandardLibrary.Marshal(utils.GetRestyLog(resp))
+	cli.logger.Infof("PSPResty->%+v", string(restLog))
 
 	if err != nil {
 		return nil, err

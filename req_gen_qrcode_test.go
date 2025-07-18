@@ -7,9 +7,11 @@ import (
 
 func TestGenQRCode(t *testing.T) {
 	vlog := VLog{}
+
 	//构造client
 	cli := NewClient(vlog, &One2PayInitParams{PARTNER_CODE, AUTH_KEY, DEVICE, CHANNEL, DEPOSIT_URL, PAYOUT_URL})
 
+	cli.SetDebugModel(true)
 	//发请求
 	resp, err := cli.GenQRCode(GenDepositRequestDemo())
 	if err != nil {
