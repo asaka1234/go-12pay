@@ -1,7 +1,5 @@
 package go_12pay
 
-import "time"
-
 type One2PayInitParams struct {
 	PartnerCode string `json:"partnerCode" mapstructure:"partnerCode" config:"partnerCode" yaml:"partnerCode"` //商户号
 	AuthKey     string `json:"authKey" mapstructure:"authKey" config:"authKey" yaml:"authKey"`                 //accessKey
@@ -133,10 +131,10 @@ type One2PayWithdrawRequest struct {
 */
 
 type One2PayWithdrawResponse struct {
-	Error               string    `json:"error"`
-	Status              int       `json:"status"` //Success Case Status 1000 only
-	Message             string    `json:"message"`
-	Ref1                string    `json:"ref1"`
-	TransactionId       string    `json:"transaction_id"`
-	TransactionDateTime time.Time `json:"transactionDate_time"` //YYY-MM-DD hh:mm:ss
+	Error               string `json:"error"`
+	Status              int    `json:"status"` //Success Case Status 1000 only
+	Message             string `json:"message"`
+	Ref1                string `json:"ref1"`
+	TransactionId       string `json:"transaction_id"`
+	TransactionDateTime string `json:"transactionDate_time"` //YYY-MM-DD hh:mm:ss
 }
