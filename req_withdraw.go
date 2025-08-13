@@ -36,7 +36,7 @@ func (cli *Client) Withdraw(req One2PayWithdrawRequest) (*One2PayWithdrawRespons
 	}
 
 	if resp.StatusCode() != 200 {
-		return nil, fmt.Errorf("status code: %d, err:%s", resp.StatusCode(), result.Error)
+		return nil, fmt.Errorf("status code: %d, err:%s", resp.StatusCode(), result.Error+result.Message)
 	}
 
 	if resp.Error() != nil {
