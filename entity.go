@@ -70,8 +70,10 @@ type One2PayDepositBackReq struct {
 	Ref1       string  `json:"ref1" mapstructure:"ref1"` //放业务自己的orderNo (只能是数字/字母)
 	Ref2       string  `json:"ref2" mapstructure:"ref2"`
 	Ref3       string  `json:"ref3" mapstructure:"ref3"`
-	Ref4       string  `json:"ref4" mapstructure:"ref4"`         // 这个用来做签名, 是amount/ref1/authkey的一个md5签名的截断值(18位)
-	TransId    string  `json:"trans_id" mapstructure:"trans_id"` //是psp三方的订单id
+	Ref4       string  `json:"ref4" mapstructure:"ref4"`             // 这个用来做签名, 是amount/ref1/authkey的一个md5签名的截断值(18位)
+	TransId    string  `json:"trans_id" mapstructure:"trans_id"`     //是psp三方的订单id
+	AmlStatus  string  `json:"aml_status" mapstructure:"aml_status"` // aml状态
+	AmlCheck   string  `json:"aml_check" mapstructure:"aml_check"`   // aml检查：Match、Not Match
 }
 
 /*
