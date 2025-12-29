@@ -5,7 +5,7 @@ type One2PayInitParams struct {
 	AuthKey     string `json:"authKey" mapstructure:"authKey" config:"authKey" yaml:"authKey"`                 //accessKey
 	Device      string `json:"device" mapstructure:"device" config:"device" yaml:"device"`
 	Channel     string `json:"channel" mapstructure:"channel" config:"channel" yaml:"channel"`
-
+	ClientIp    string `json:"clientIp" mapstructure:"clientIp" config:"clientIp" yaml:"clientIp"`
 	DepositUrl  string `json:"depositUrl" mapstructure:"depositUrl" config:"depositUrl" yaml:"depositUrl"`     //充值url
 	WithdrawUrl string `json:"withdrawUrl" mapstructure:"withdrawUrl" config:"withdrawUrl" yaml:"withdrawUrl"` //退款url
 }
